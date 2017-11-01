@@ -1,0 +1,103 @@
+set encoding=utf-8
+scriptencoding utf-8
+set noshowmode
+set t_Co=256
+set langmenu=en_US.UTF-8
+let $LANG = 'en_US.UTF-8'
+set nocompatible
+set ttyfast
+set lazyredraw
+set autoindent
+set ignorecase
+set relativenumber
+set cursorline
+set undofile
+set undodir=${HOME}/.vimundo/
+nnoremap <esc> :noh<return><esc>
+nnoremap <leader>q :bp<cr>:bd #<cr>
+
+" Set leader
+let mapleader = "\<Space>" 
+" Double Leader key moves back to previous file
+nnoremap <Leader><Leader> <c-^>
+" Leader + d = delete buffer
+nmap <Leader>d :bdelete<cr>
+nmap <F2> :bprevious<cr>
+nmap <F3> :bnext<cr>
+
+" Show command
+set showcmd
+cmap WQ wq
+cmap Wq wq
+cmap W w
+cmap Q q
+
+" set mouse
+if has('mouse') | set mouse=a | endif
+
+" Synchronizes with the system clipboard
+set clipboard^=unnamed,unnamedplus
+
+" Show number and ruler
+set nu
+set ruler
+
+" Start searching when you type the first character of the search string
+set incsearch
+" Any search highlights the string matched by the search
+set hlsearch
+
+" Text, tab and ident related
+"set smarttab
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+set ai "Auto ident
+
+" Set font
+set guifont=Source_Code_Pro_Medium:h16
+let g:Powerline_symbols = 'fancy'
+
+
+
+" Smart way to move between windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+" Turn of backup since there is version controls
+set nobackup
+set nowb
+set noswapfile
+
+" source $MYVIMRC reloads the saved $MYVIMRC
+nmap <Leader>s :source $MYVIMRC<CR>
+
+" opens $MYVIMRC for editing, or use :tabedit $MYVIMRC
+nmap <Leader>v :e $MYVIMRC<CR>
+"set trailing spaces
+set list lcs=trail:·,tab:»·,eol:¬
+nmap <Leader>l :let &list = !&list<CR>
+
+" Ignore files
+" Useful for ctrlP
+set wildignore+=*/assets/*,*/node_modules/*,*/test_out/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
+
+au BufReadPost Jenkinsfile set syntax=groovy
+au BufReadPost Jenkinsfile set filetype=groovy
+au BufNewFile,BufRead *.ejs set syntax=json
+
+source ~/.dotfiles/roles/vim/files/colors/config.vim
+source ~/.dotfiles/roles/vim/files/config/bufferline.vim
+source ~/.dotfiles/roles/vim/files/config/fzf.vim
+source ~/.dotfiles/roles/vim/files/config/identguides.vim
+source ~/.dotfiles/roles/vim/files/config/vim-json.vim
+source ~/.dotfiles/roles/vim/files/config/lightline.vim
+source ~/.dotfiles/roles/vim/files/config/neomake.vim
+source ~/.dotfiles/roles/vim/files/config/nerdtree.vim
+source ~/.dotfiles/roles/vim/files/plugins.vim

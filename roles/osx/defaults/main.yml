@@ -1,0 +1,43 @@
+homebrew_packages:
+  - exa
+  - fasd
+  - fzf
+  - git
+  - git-crypt
+  - jenv
+  - neovim
+  - nvm
+  - reattach-to-user-namespace
+  - ripgrep
+  - ssh-copy-id
+  - svn
+  - tig
+  - tmate
+  - tmux
+  - tree
+  - vim
+  - wget
+  - zsh
+
+cask_packages:
+  - 1password
+  - android-file-transfer
+  - android-sdk
+  - caffeine
+  - docker
+  - firefoxnightly
+  - font-source-code-pro
+  - google-chrome
+  - gpgtools
+  - hyper
+  - iterm2
+  - java
+  - slack
+  - spectacle
+  - telegram
+  - the-unarchiver
+
+# Mac-App-Store-only apps to be installed with mas
+# Use App IDs found with `mas search <name>`
+osx_mas_packages:
+  - 409203825  # Numbers

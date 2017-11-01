@@ -1,0 +1,5 @@
+- name: Symlink Iterm config
+  file:
+    src: "{{dotfiles_home}}/roles/osx/files/iterm/default.json"
+    dest: "{{dotfiles_user_home}}/Library/Application Support/iTerm2/DynamicProfiles/default.json"
+    state: link

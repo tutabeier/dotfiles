@@ -1,0 +1,39 @@
+- name: Makes sure autoload directory exists for Neovim
+  file:
+    path: "{{ zsh_custom_folder }}"
+    state: directory
+
+- name: Install zsh-syntax-highlighting
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ zsh_custom_folder }}/plugins/zsh-syntax-highlighting"
+
+- name: Download Oh My ZSH
+  get_url:
+    url: https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    dest: /tmp/zsh-installer.sh
+
+- name: Install Oh My ZSH
+  script: /tmp/zsh-installer.sh
+
+- name: Symlink zshrc for ZSH
+  file:
+    src: "{{dotfiles_home}}/roles/zsh/files/zshrc"
+    dest: "{{dotfiles_user_home}}/.zshrc"
+    state: link
+
+- name: Symlink zshrc for ZSH
+  file:
+    src: "{{dotfiles_home}}/roles/zsh/files/{{ item.src }}"
+    dest: "{{ zsh_custom_folder }}/{{ item.dest }}"
+    state: link
+  with_items:
+    - src: 'lazy-load.sh'
+      dest: 'lazy-load.sh'
+    - src: 'aliases.zsh'
+      dest: 'aliases.zsh'
+    - src: 'themes'
+      dest: 'themes'
+
+- name: Set ZSH as default shell
+  shell: chsh -s $(which zsh)

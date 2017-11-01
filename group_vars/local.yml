@@ -1,0 +1,12 @@
+dotfiles_user_home: "{{ '~' | expanduser }}"
+# Where your dotfiles live. Probably don't need to change this.
+dotfiles_home: "{{dotfiles_user_home}}/.dotfiles"
+
+# Name used in commit messages
+full_name: Lucas Falk Beier 
+git_user: tutabeier
+git_email: lucas.beier@gmail.com
+git_signing_key: 5F565F92B535C7E6CCD6B3BF6A083A54A4D83E11
+
+# Vim
+vim_install_plugins: no

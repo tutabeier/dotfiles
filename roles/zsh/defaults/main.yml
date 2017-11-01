@@ -1,0 +1,1 @@
+zsh_custom_folder: "{{ dotfiles_user_home }}/.zsh-custom"
