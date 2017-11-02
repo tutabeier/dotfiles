@@ -2,9 +2,8 @@
   script: set-defaults.sh
   changed_when: false
 
-- name: Install mac-specific homebrew packages
-  homebrew: name={{item}} state=latest
-  with_items: '{{homebrew_packages}}'
+- name: Tap into neovim/neovim
+  homebrew_tap: tap=neovim/neovim state=present
 
 - name: Tap into caskroom/cask
   homebrew_tap: tap=caskroom/cask state=present
@@ -15,18 +14,16 @@
 - name: Tap into caskroom/versions
   homebrew_tap: tap=caskroom/versions state=present
 
-- name: Tap into neovim/neovim
-  homebrew_tap: tap=neovim/neovim state=present
-
 - name: Tap into buo/cask-upgrade
   homebrew_tap: tap=buo/cask-upgrade state=present
+
+- name: Install mac-specific homebrew packages
+  homebrew: name={{item}} state=latest
+  with_items: '{{homebrew_packages}}'
 
 - name: Install Mac apps with homebrew cask
   homebrew_cask: name={{item}} state=present
   with_items: '{{cask_packages}}'
-
-- name: Install mas
-  homebrew: name=mas state=latest
 
 - name: Install Mac-App-Store-only apps with mas
   command: mas install {{item}}

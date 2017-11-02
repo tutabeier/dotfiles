@@ -7,6 +7,7 @@ homebrew_packages:
   - jenv
   - neovim
   - nvm
+  - mas
   - reattach-to-user-namespace
   - ripgrep
   - ssh-copy-id
