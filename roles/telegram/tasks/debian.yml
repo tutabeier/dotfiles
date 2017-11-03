@@ -17,3 +17,4 @@
     src: /opt/telegram
     dest: /usr/bin/telegram
     state: link
+  become: true
