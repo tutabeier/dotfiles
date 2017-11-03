@@ -1,20 +1,8 @@
-- name: Download Telegram
-  get_url:
-    url: https://telegram.org/dl/desktop/linux
-    dest: /tmp/telegram.tar.xz
+- name: Adds Telegram repo
+  apt_repository:
+    repo: 'ppa:atareao/telegram'
+    update_cache: yes
 
-- name: Extract Telegram
-  unarchive:
-    src: /tmp/telegram.tar.xz
-    dest: /tmp
-
-- name: Move Telegram folder
-  command: mv /tmp/Telegram /opt/telegram
-  become: true
-
-- name: Create symlink for Telegram
-  file:
-    src: /opt/telegram
-    dest: /usr/bin/telegram
-    state: link
+- name: Install Telegram with apt
+  apt: name=telegram state=latest
   become: true
