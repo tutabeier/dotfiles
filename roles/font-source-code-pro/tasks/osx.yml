@@ -1,2 +1,2 @@
 - name: Install Source Code Pro font with Homebrew
-  homebrew_cask: name=tmate state=latest
+  homebrew_cask: name=font-source-code-pro

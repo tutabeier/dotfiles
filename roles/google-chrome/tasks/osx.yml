@@ -1,2 +1,2 @@
-- name: Install Slack with Homebrew cask
-  homebrew_cask: name=slack state=latest
+- name: Install Google Chrome with Homebrew cask
+  homebrew_cask: name=google-chrome
