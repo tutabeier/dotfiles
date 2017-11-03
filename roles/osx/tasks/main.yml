@@ -27,7 +27,7 @@
   with_items: '{{osx_mas_packages}}'
 
 - name: Configures Spectacle
-  file:
+  copy:
     src: "{{dotfiles_home}}/roles/osx/files/spectacle.json"
     dest: "{{dotfiles_user_home}}/Library/Application Support/Spectacle/Shortcuts.json"
-    state: link
+    backup: yes

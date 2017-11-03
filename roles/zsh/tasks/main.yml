@@ -21,26 +21,24 @@
 - name: Install Oh My ZSH
   script: /tmp/zsh-installer.sh
 
-- name: Symlink zshrc for ZSH
-  file:
+- name: Copy zshrc to $HOME
+  copy:
     src: "{{dotfiles_home}}/roles/zsh/files/zshrc"
     dest: "{{dotfiles_user_home}}/.zshrc"
-    state: link
-    force: true
+    backup: yes
 
-- name: Symlink other files for ZSH
-  file:
+- name: Copy ZSH files to $HOME
+  copy:
     src: "{{dotfiles_home}}/roles/zsh/files/{{ item.src }}"
     dest: "{{ zsh_custom_folder }}/{{ item.dest }}"
-    state: link
-    force: true
+    backup: yes
   with_items:
     - src: 'lazy-load.sh'
       dest: 'lazy-load.sh'
     - src: 'aliases.zsh'
       dest: 'aliases.zsh'
     - src: 'themes'
-      dest: 'themes'
+      dest: ''
 
 - name: Set ZSH as default shell
   shell: chsh -s $(which zsh)

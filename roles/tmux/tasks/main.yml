@@ -8,11 +8,11 @@
     repo: https://github.com/tmux-plugins/tpm.git
     dest: "{{ dotfiles_user_home }}/.tmux/plugins/tpm"
 
-- name: Symlink files for Tmux
-  file:
+- name: Copying files
+  copy:
     src: "{{dotfiles_home}}/roles/tmux/files/{{ item.src }}"
     dest: "{{dotfiles_user_home}}/.{{ item.dest }}"
-    state: link
+    backup: yes
   with_items:
     - src: 'tmux.conf'
       dest: 'tmux.conf'
