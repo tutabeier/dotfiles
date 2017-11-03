@@ -2,7 +2,6 @@
   file:
     path: "/usr/share/fonts/opentype"
     state: directory
-    become: true
 
 - name: Install Source Code Pro font
   git:
