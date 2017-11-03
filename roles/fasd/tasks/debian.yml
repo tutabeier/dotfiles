@@ -5,4 +5,4 @@
 
 - name: Install fasd with apt
   apt: name=fasd state=latest
-  become_method: sudo
+  become: true

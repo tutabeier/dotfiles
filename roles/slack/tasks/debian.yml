@@ -1,4 +1,4 @@
 - name: Install Slack deb package
   apt:
     deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-2.8.2-amd64.deb
-  become_method: sudo
+  become: true
