@@ -7,3 +7,9 @@
 - name: Install Telegram with apt
   apt: name=telegram state=latest
   become: true
+
+- name: Symlink for Telegram
+  file:
+    src: /opt/telegram/Telegram
+    dest: /usr/bin/telegram
+    state: link
