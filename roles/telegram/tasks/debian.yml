@@ -1,0 +1,18 @@
+- name: Download Telegram
+  get_url:
+    url: https://telegram.org/dl/desktop/linux
+    dest: /tmp/telegram.tar.xz
+
+- name: Extract Telegram
+  unarchive:
+    src: /tmp/telegram.tar.xz
+    dest: /tmp
+
+- name: Move Telegram folder
+  command: mv /tmp/Telegram /opt/telegram
+
+- name: Create symlink for Telegram
+  file:
+    src: /opt/telegram
+    dest: /usr/bin/telegram
+    state: link

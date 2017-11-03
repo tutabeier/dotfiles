@@ -1,0 +1,4 @@
+- name: Install jenv
+  git:
+    repo: https://github.com/gcuisinier/jenv.git
+    dest: "{{ zsh_custom_folder }}/.jenv"

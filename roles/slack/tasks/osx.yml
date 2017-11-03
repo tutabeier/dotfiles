@@ -1,0 +1,2 @@
+- name: Install Tmate with Homebrew
+  homebrew: name=tmate state=latest

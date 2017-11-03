@@ -1,3 +1,8 @@
+- import_tasks: osx.yml
+  when: ansible_os_family == "Darwin"
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+
 - name: Makes sure autoload directory exists for Neovim
   file:
     path: "{{ zsh_custom_folder }}"
@@ -21,12 +26,14 @@
     src: "{{dotfiles_home}}/roles/zsh/files/zshrc"
     dest: "{{dotfiles_user_home}}/.zshrc"
     state: link
+    force: true
 
-- name: Symlink zshrc for ZSH
+- name: Symlink other files for ZSH
   file:
     src: "{{dotfiles_home}}/roles/zsh/files/{{ item.src }}"
     dest: "{{ zsh_custom_folder }}/{{ item.dest }}"
     state: link
+    force: true
   with_items:
     - src: 'lazy-load.sh'
       dest: 'lazy-load.sh'

@@ -1,0 +1,2 @@
+- name: Install Caffeine with Homebrew
+  homebrew: name=caffeine state=latest

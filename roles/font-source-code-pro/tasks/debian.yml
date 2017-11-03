@@ -1,0 +1,12 @@
+- name: Makes sure folder for Source Code Pro font exists
+  file:
+    path: "/usr/share/fonts/opentype"
+    state: directory
+
+- name: Install Source Code Pro font
+  git:
+    repo: https://github.com/adobe-fonts/source-code-pro.git
+    dest: "/usr/share/fonts/opentype/scp"
+
+- name: Updates font cache
+  command: fc-cache -f -v

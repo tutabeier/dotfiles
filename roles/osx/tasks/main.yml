@@ -2,9 +2,6 @@
   script: set-defaults.sh
   changed_when: false
 
-- name: Tap into neovim/neovim
-  homebrew_tap: tap=neovim/neovim state=present
-
 - name: Tap into caskroom/cask
   homebrew_tap: tap=caskroom/cask state=present
 

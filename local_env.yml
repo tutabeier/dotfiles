@@ -5,8 +5,20 @@
 - name: Set up local development environment
   hosts: local
   roles:
+    - caffeine
+    - curl
+    - font-source-code-pro
     - git
-    - vim
+    - google-chrome
+    - jenv
+    - nvm
+    #- slack
+    - telegram
+    - tig
+    - tmate
     - tmux
+    - tree
+    - vim
+    - wget
     - zsh
     - {role: osx, when: ansible_os_family == "Darwin"}

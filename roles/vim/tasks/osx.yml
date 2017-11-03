@@ -1,0 +1,8 @@
+- name: Tap into neovim/neovim
+  homebrew_tap: tap=neovim/neovim state=present
+
+- name: Install Neovim with Homebrew
+  homebrew: name=neovim state=latest
+
+- name: Install Vim with Homebrew
+  homebrew: name=vim state=latest

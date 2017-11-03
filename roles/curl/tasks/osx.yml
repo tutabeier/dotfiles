@@ -1,0 +1,2 @@
+- name: Install curl with Homebrew
+  homebrew: name=curl state=latest

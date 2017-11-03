@@ -1,0 +1,3 @@
+- name: Install Tmate with apt
+  apt: name=tmate state=latest
+  become_method: sudo

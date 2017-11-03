@@ -1,9 +1,14 @@
+- import_tasks: osx.yml
+  when: ansible_os_family == "Darwin"
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+
 - name: Install Tmux Plugin Manager
   git:
     repo: https://github.com/tmux-plugins/tpm.git
     dest: "{{ dotfiles_user_home }}/.tmux/plugins/tpm"
 
-- name: Symlink files for Neovim
+- name: Symlink files for Tmux
   file:
     src: "{{dotfiles_home}}/roles/tmux/files/{{ item.src }}"
     dest: "{{dotfiles_user_home}}/.{{ item.dest }}"

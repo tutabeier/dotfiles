@@ -17,15 +17,44 @@ setupMac() {
   fi
 }
 
+setupDebian() {
+  echo "Setup for Debian-based distro."
+  apt-get update
+  apt-get --yes upgrade
+
+  if ! [ -x "$(command -v ansible-playbook)" ]; then
+    echo "Ansible not installed, installing it."
+    echo "Adding Ansible repository to /etc/apt/sources.list"
+
+    grep -q -F 'deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main' /etc/apt/sources.list || echo 'deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main' >> /etc/apt/sources.list
+
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+    apt-get update
+    apt-get install ansible
+  else
+    echo "Ansible installed, skipping installation."
+  fi
+
+}
+
 setupLinux() {
   echo "Setup for Linux"
+
+  if [ -f "/etc/debian_version" ]; then
+    setupDebian
+  elif [ "$(grep -Ei 'fedora|redhat' /etc/*release)" ]; then
+    echo "Setup for RedHat-based distro."
+  else
+    echo "Unable to setup this distro."
+  fi
 }
 
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    Linux*)   setupLinux;;
-    Darwin*)  setupMac;;
+  Linux*)   setupLinux;;
+  Darwin*)  setupMac;;
 esac
 
 echo "Setting up local dev environment..."
+cp ansible.cfg $HOME/.ansible.cfg
 ansible-playbook -i ./hosts ./local_env.yml
