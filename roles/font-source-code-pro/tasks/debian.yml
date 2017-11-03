@@ -2,12 +2,13 @@
   file:
     path: "/usr/share/fonts/opentype"
     state: directory
+  become: true
 
 - name: Install Source Code Pro font
   git:
     repo: https://github.com/adobe-fonts/source-code-pro.git
     dest: "/usr/share/fonts/opentype/scp"
-    become: true
+  become: true
 
 - name: Updates font cache
   command: fc-cache -f -v
