@@ -103,7 +103,6 @@ source ~/.dotfiles/vim/go.vim
 source ~/.dotfiles/vim/neoformat.vim
 source ~/.dotfiles/vim/nerdtree.vim
 source ~/.dotfiles/vim/rg.vim
-source ~/.dotfiles/vim/tagbar.vim
 source ~/.dotfiles/vim/tmuxline.vim
 source ~/.dotfiles/vim/vim-json.vim
 source ~/.dotfiles/vim/identline.vim
