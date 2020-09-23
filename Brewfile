@@ -1,3 +1,4 @@
+brew "antigen"
 brew "curl"
 brew "git"
 brew "go"

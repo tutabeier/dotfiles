@@ -97,6 +97,15 @@ set noswapfile
 set wildignore+=*/assets/*,*/node_modules/*,*/test_out/*,*.so,*.swp,*.zip
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+" Show autocomplete when Tab is pressed
+inoremap <silent><expr> <Tab> coc#refresh()
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 source ~/.dotfiles/vim/airline.vim
 source ~/.dotfiles/vim/fzf.vim
 source ~/.dotfiles/vim/go.vim

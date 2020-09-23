@@ -1,8 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-" Simple tmux statusline generator with support for powerline symbols and statusline / airline / lightline integration
-Plug 'edkolev/tmuxline.vim'
-
 " Syntax highlighting for JSON in Vim
 Plug 'elzr/vim-json', { 'for': 'json' }
 
@@ -25,9 +22,6 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 "Comment stuff out
 Plug 'tpope/vim-commentary'
 
-"A Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive'
-
 "A plugin of NERDTree showing git status
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 
@@ -35,14 +29,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-"Vim plugin that displays tags in a window, ordered by scope
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
-
 "Delete all the buffers except the current/named buffer
 Plug 'vim-scripts/BufOnly.vim', { 'on': 'BufOnly' }
 
-"A code-completion engine for Vim: http://valloric.github.io/YouCompleteMe/
-Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Delete buffers and close files in Vim without closing your windows or messing up your layout.
 Plug 'moll/vim-bbye'
@@ -52,6 +42,11 @@ Plug 'Yggdroot/indentLine'
 
 " markdown preview plugin for (neo)vim
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
