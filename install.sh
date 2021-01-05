@@ -4,7 +4,6 @@
 set -o nounset
 set -o errexit
 
-red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
@@ -12,34 +11,27 @@ log() {
 	echo "${green}$(date -u) $1${reset}"
 }
 
-DOTFILES_DIR="$HOME/.dotfiles"
-
-log "Linking zshrc"
-ln -sfn "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc"
-
-log "Linking p10k"
-ln -sfn "$DOTFILES_DIR/zsh/p10k.zsh" "$HOME/.p10k.zsh"
-
 if test ! $(which brew); then
 	log "Installing Homebrew..."
-
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 else
-	log "Homebrew already installed. Skipping installation."
+	log "Homebrew already installed. Skipping."
 fi
 
-log "Installing Brewfile formulas"
+log "Updating Brew formulas"
+brew update
+log "Installing Brew formulas"
 brew bundle
+log "Upgrading Brew formulas"
+brew upgrade
 
-log "Creating autoload folder"
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+log "Installing Spacevim"
+curl -sLf https://spacevim.org/install.sh | bash
 
-log "Linking Vim config"
-ln -sfn "$DOTFILES_DIR/vim/vimrc" "$HOME/.vimrc"
+log "Removing default Spacevim config"
+rm ~/.SpaceVim.d/init.toml
 
-log "Linking Neovim config"
-mkdir -p $HOME/.config/nvim/
-ln -sfn "$DOTFILES_DIR/vim/neovimrc" "$HOME/.config/nvim/init.vim"
+log "Linking custom Spacevim config"
+ln -s ~/.dotfiles/spacevim.config.toml ~/.SpaceVim.d/init.toml
 
 log "Finished!"
